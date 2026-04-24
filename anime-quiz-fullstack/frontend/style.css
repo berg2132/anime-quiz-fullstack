@@ -388,4 +388,7 @@ label {
 .btn-edit   { background: #1d4ed8; color: white; }
 .btn-delete { background: var(--red); color: white; }
  
+
+.hidden { display: none !important; }
+
 .hidden { display: none !important; }
