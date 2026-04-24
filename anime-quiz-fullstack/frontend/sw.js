@@ -1,0 +1,25 @@
+const CACHE_NAME = 'anime-quiz-v1';
+const assets = [
+  '/',
+  '/index.html',
+  '/style.css',
+  '/script.js',
+  '/manifest.json'
+];
+
+self.addEventListener('install', e => {
+  e.waitUntil(
+    caches.open(CACHE_NAME).then(cache => cache.addAll(assets))
+  );
+});
+
+self.addEventListener('fetch', e => {
+  // Não cacheia chamadas da API
+  if (e.request.url.includes('/api/')) {
+    e.respondWith(fetch(e.request));
+    return;
+  }
+  e.respondWith(
+    caches.match(e.request).then(res => res || fetch(e.request))
+  );
+});

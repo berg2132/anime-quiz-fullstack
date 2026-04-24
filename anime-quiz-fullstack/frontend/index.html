@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#040b1a">
+    <link rel="manifest" href="manifest.json">
+    <title>Anime Quiz Hero</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ===== TELA INICIAL ===== -->
+    <div class="container" id="screen-home">
+        <h1 class="main-title">ANIME QUIZ</h1>
+        <p class="subtitle">Teste seus conhecimentos de anime!</p>
+        <button class="btn-start" id="startBtn">⚡ INICIAR DESAFIO</button>
+        <button class="btn-admin" id="adminBtn">⚙ Gerenciar Perguntas</button>
+    </div>
+
+    <!-- ===== TELA DO QUIZ ===== -->
+    <div class="container hidden" id="screen-quiz">
+        <div class="quiz-header">
+            <span id="q-counter">Pergunta 1/10</span>
+            <span id="q-score">Pontos: 0</span>
+        </div>
+        <div id="quiz-body"></div>
+        <button class="btn-secondary" id="backHomeBtn">← Voltar</button>
+    </div>
+
+    <!-- ===== TELA DE RESULTADO ===== -->
+    <div class="container hidden" id="screen-result">
+        <h2 class="main-title" id="result-title">RESULTADO</h2>
+        <p class="result-score" id="result-text"></p>
+        <button class="btn-start" id="playAgainBtn">🔄 Jogar Novamente</button>
+        <button class="btn-secondary" id="resultHomeBtn">⬅ Menu</button>
+    </div>
+
+    <!-- ===== PAINEL ADMIN (CRUD) ===== -->
+    <div class="container admin-panel hidden" id="screen-admin">
+        <h2 class="main-title" style="font-size:1.8rem">⚙ GERENCIAR PERGUNTAS</h2>
+
+        <!-- Formulário -->
+        <div class="admin-form-card">
+            <h3 id="form-title-admin">Nova Pergunta</h3>
+            <input type="hidden" id="edit-id">
+
+            <label>Pergunta *</label>
+            <input type="text" id="f-question" placeholder="Ex: Qual é o poder do Luffy?" class="admin-input">
+
+            <label>Opções (4 alternativas) *</label>
+            <input type="text" id="f-opt0" placeholder="Opção A" class="admin-input">
+            <input type="text" id="f-opt1" placeholder="Opção B" class="admin-input">
+            <input type="text" id="f-opt2" placeholder="Opção C" class="admin-input">
+            <input type="text" id="f-opt3" placeholder="Opção D" class="admin-input">
+
+            <label>Resposta correta *</label>
+            <select id="f-answer" class="admin-input">
+                <option value="0">Opção A</option>
+                <option value="1">Opção B</option>
+                <option value="2">Opção C</option>
+                <option value="3">Opção D</option>
+            </select>
+
+            <label>Anime *</label>
+            <input type="text" id="f-anime" placeholder="Ex: One Piece" class="admin-input">
+
+            <label>Dificuldade</label>
+            <select id="f-difficulty" class="admin-input">
+                <option value="facil">Fácil</option>
+                <option value="medio" selected>Médio</option>
+                <option value="dificil">Difícil</option>
+            </select>
+
+            <label>URL da imagem (opcional)</label>
+            <input type="text" id="f-imageUrl" placeholder="https://..." class="admin-input">
+
+            <div class="admin-btn-row">
+                <button class="btn-start" id="saveQuestionBtn" style="font-size:1rem; padding:12px">💾 Salvar</button>
+                <button class="btn-secondary" id="cancelEditBtn" style="display:none">✖ Cancelar</button>
+            </div>
+            <p id="admin-msg" class="admin-msg"></p>
+        </div>
+
+        <!-- Lista de perguntas -->
+        <div class="admin-list-header">
+            <h3>Perguntas cadastradas</h3>
+            <button class="btn-secondary small" id="refreshListBtn">↻ Atualizar</button>
+        </div>
+        <div id="admin-list"></div>
+
+        <button class="btn-secondary" id="adminBackBtn" style="margin-top:20px">⬅ Menu</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
